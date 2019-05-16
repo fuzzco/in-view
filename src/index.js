@@ -12,7 +12,9 @@ export default {
         }
     },
     methods: {
-        inView(opts = {}) {
+        async inView(opts = {}, delay = 0) {
+            await this.$nextTick()
+
             // handle string
             if (typeof opts == 'string') {
                 opts = {
@@ -26,12 +28,27 @@ export default {
                 }
             }
 
-            this.inViewGroups.push(new InViewGroup(opts))
+            opts = {
+                delay,
+                ...opts
+            }
+
+            const newGroup = new InViewGroup(opts)
+            this.inViewGroups.push(newGroup)
+
+            if (newGroup.run) {
+                newGroup.update()
+            }
         },
         updateInView() {
             window.requestAnimationFrame(() => {
                 this.inViewGroups.forEach(group => group.update())
             })
         }
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.updateInView)
+        window.removeEventListener('mousewheel', this.updateInView)
+        window.removeEventListener('resize', this.updateInView)
     }
 }

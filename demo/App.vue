@@ -11,6 +11,18 @@
         <p>8</p>
         <p>9</p>
         <p>10</p>
+
+        <div class="grid">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+        </div>
     </main>
 </template>
 
@@ -20,7 +32,8 @@ import inView from '../src'
 export default {
     mixins: [inView],
     mounted() {
-        this.inView(['h2', 'p'])
+        this.inView('p:nth-of-type(7)')
+        this.inView('.grid p', 100)
     }
 }
 </script>
@@ -41,5 +54,15 @@ p {
     color: white;
     padding: 20px;
     margin: 40px auto;
+    transition: opacity 0.8s, transform 0.8s;
+}
+p[data-wiv-id]:not(.in-view) {
+    transition: none;
+    transform: translateY(40px);
+    opacity: 0;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 </style>
