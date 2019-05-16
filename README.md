@@ -1,5 +1,7 @@
 `npm i @fuzzco/in-view`
 
+[Demo](https://fuzzco.github.io/in-view/)
+
 In your Vue component:
 
 ```html
