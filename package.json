@@ -1,13 +1,13 @@
 {
     "name": "@fuzzco/in-view",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Vue mixin for smooth and robust enter/leave viewport handling.",
     "main": "dist/index.js",
     "scripts": {
-        "build": "mkdir -p dist && NODE_ENV=production babel src | terser --source-map --output ./dist/index.js",
-        "prepublish": "npm run build",
         "dev": "vue serve demo/App.vue",
-        "buildDemo": "vue build demo/App.vue"
+        "build": "webpack",
+        "buildDemo": "vue build demo/App.vue",
+        "prepublish": "npm run build && npm run buildDemo"
     },
     "keywords": [],
     "author": "",
@@ -17,6 +17,8 @@
         "@babel/core": "^7.4.4",
         "@babel/preset-env": "^7.4.4",
         "terser": "^3.17.0",
+        "webpack": "^4.31.0",
+        "webpack-cli": "^3.3.2",
         "vue": "^2.6.10"
     }
 }

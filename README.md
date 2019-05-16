@@ -31,6 +31,13 @@ In your Vue component:
 
 ```js
 {
+    // pass in DOM node(s) to use directly
+    // (doing so ignores `selector`)
+    // el for a single node...
+    el: null,
+    // ...els for an array of nodes
+    els: null,
+
     // single selector - see below
     selector: '',
 

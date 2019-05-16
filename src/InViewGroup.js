@@ -6,6 +6,8 @@ const classes = [ABOVE_VIEW, IN_VIEW, BELOW_VIEW]
 export default class {
     constructor(opts = {}) {
         this.opts = {
+            el: null,
+            els: null,
             selectors: [],
             delay: 0,
             run: true,
@@ -35,6 +37,12 @@ export default class {
     }
 
     getNodes() {
+        if (this.opts.el) {
+            return [this.opts.el]
+        } else if (this.els) {
+            return this.opts.els
+        }
+
         return this.opts.selectors
             .map(selector =>
                 [].slice.call(
