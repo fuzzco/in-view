@@ -12,16 +12,22 @@ export default class {
             onEnter: el => this.setClass(el, IN_VIEW),
             onLeaveTop: el => this.setClass(el, ABOVE_VIEW),
             onLeaveBottom: el => this.setClass(el, BELOW_VIEW),
+            once: false,
             ...opts
+        }
+
+        if (!this.opts.selectors.length && opts.selector) {
+            this.opts.selectors = [opts.selector]
         }
 
         if (!window.wivCount) {
             window.wivCount = 0
         }
-        this.guid = window.wivCount++
+        this.id = window.wivCount++
         this.localCount = 0
 
         this.status = {}
+        this.inViewOnce = []
 
         if (this.run) {
             this.update()
@@ -68,12 +74,18 @@ export default class {
             if (!this.getNodeId(node)) {
                 node.setAttribute(
                     'data-wiv-id',
-                    `${this.guid}:${this.localCount++}`
+                    `${this.id}:${this.localCount++}`
                 )
                 firstTime = true
             }
 
-            const oldStatus = this.status[this.getNodeId(node)]
+            const nodeId = this.getNodeId(node)
+
+            if (this.opts.once && this.inViewOnce.includes(nodeId)) {
+                return
+            }
+
+            const oldStatus = this.status[nodeId]
             let newStatus = `${oldStatus}`
 
             if (height && rect.top + height <= 0) {
@@ -118,8 +130,12 @@ export default class {
                 }
             }
 
+            if (newStatus == IN_VIEW) {
+                this.inViewOnce.push(nodeId)
+            }
+
             // update status
-            this.status[this.getNodeId(node)] = newStatus
+            this.status[nodeId] = newStatus
         })
 
         // consolidate changes

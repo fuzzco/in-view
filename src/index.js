@@ -12,9 +12,7 @@ export default {
         }
     },
     methods: {
-        async inView(opts = {}, delay = 0) {
-            await this.$nextTick()
-
+        inView(opts = {}, delay = 0) {
             // handle string
             if (typeof opts == 'string') {
                 opts = {
@@ -29,7 +27,7 @@ export default {
             }
 
             opts = {
-                delay,
+                delay: opts.delay || delay,
                 ...opts
             }
 

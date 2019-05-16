@@ -7,16 +7,16 @@
         <p>4</p>
         <p>5</p>
         <p>6</p>
-        <p>7</p>
+        <p>I fade in every time</p>
         <p>8</p>
         <p>9</p>
         <p>10</p>
 
         <div class="grid">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
+            <p>We</p>
+            <p>fade</p>
+            <p>in</p>
+            <p>once</p>
             <p>5</p>
             <p>6</p>
             <p>7</p>
@@ -32,8 +32,15 @@ import inView from '../src'
 export default {
     mixins: [inView],
     mounted() {
-        this.inView('p:nth-of-type(7)')
-        this.inView('.grid p', 100)
+        // we have to get specific so we don't get both 7th-sibling <p> tags
+        this.inView('.class > p:nth-of-type(7)')
+
+        // can also pass an object of opts
+        this.inView({
+            selector: '.grid p',
+            once: true,
+            delay: 100
+        })
     }
 }
 </script>
