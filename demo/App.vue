@@ -1,15 +1,16 @@
 <template>
     <main class="class">
-        <p v-in-view>1</p>
-        <p v-in-view>2</p>
-        <p v-in-view>3</p>
-        <p v-in-view>4</p>
-        <p v-in-view>5</p>
-        <p v-in-view>6</p>
-        <p v-in-view>7</p>
-        <p v-in-view>8</p>
-        <p v-in-view>9</p>
-        <p v-in-view>10</p>
+        <h2>In-View</h2>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
     </main>
 </template>
 
@@ -17,13 +18,18 @@
 import inView from '../src'
 
 export default {
-    directives: {
-        inView
+    mixins: [inView],
+    mounted() {
+        this.inView(['h2', 'p'])
     }
 }
 </script>
 
 <style>
+main {
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+}
 p {
     width: 100px;
     height: 100px;
@@ -33,7 +39,6 @@ p {
     background: tomato;
     border-radius: 15px;
     color: white;
-    font-family: Helvetica, sans-serif;
     padding: 20px;
     margin: 40px auto;
 }
