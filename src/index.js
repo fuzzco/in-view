@@ -12,7 +12,7 @@ export default {
         }
     },
     methods: {
-        inView(opts = {}, delay = 0) {
+        async inView(opts = {}, delay = 0) {
             // handle string
             if (typeof opts == 'string') {
                 opts = {
@@ -35,6 +35,7 @@ export default {
             this.inViewGroups.push(newGroup)
 
             if (newGroup.run) {
+                await this.$nextTick()
                 newGroup.update()
             }
         },
