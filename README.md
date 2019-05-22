@@ -66,7 +66,7 @@ See `demo/App.vue` for usage.
 
 ## Methods
 
-| Name           | Params                      | Notes                                                                                                                                                                                                 |
-| -------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `inView`       | `(options = {}, delay = 0)` | _ `options` can be a string or object.<br/>_ `delay` is overridden by `options.delay` if provided.<br/>Register an element or group of elements for `in-view` events. See above for `options` values. |
-| `updateInView` | None                        | Recalculate items in view. Called automatically on `scroll`, `mousewheel`, and `resize`, but can also be called manually.                                                                             |
+| Name           | Params                      | Notes                                                                                                                                                                                                               |
+| -------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `inView`       | `(options = {}, delay = 0)` | <ul><li>`options` can be a string or object.</li><li> `delay` is overridden by `options.delay` if provided.</li></ul>Register an element or group of elements for `in-view` events. See above for `options` values. |
+| `updateInView` | None                        | Recalculate items in view. Called automatically on `scroll`, `mousewheel`, and `resize`, but can also be called manually.                                                                                           |
