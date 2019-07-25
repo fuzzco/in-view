@@ -5,6 +5,7 @@ export default {
         window.addEventListener('scroll', this.updateInView)
         window.addEventListener('mousewheel', this.updateInView)
         window.addEventListener('resize', this.updateInView)
+        this.updateInView()
     },
     data() {
         return {

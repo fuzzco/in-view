@@ -148,7 +148,7 @@ export default class {
 
         // consolidate changes
         const allEntered = enteredViaTop.concat(enteredViaBottom)
-        const allLeft = leftViaTop.concat(leftViaBottom)
+        // const allLeft = leftViaTop.concat(leftViaBottom)
 
         // fire events
         if (this.opts.onEnter) {

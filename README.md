@@ -6,7 +6,7 @@ In your Vue component:
 
 ```html
 <script>
-    import inView from '../src'
+    import inView from '@fuzzco/in-view'
 
     export default {
         mixins: [inView],
