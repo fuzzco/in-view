@@ -1,6 +1,6 @@
 {
     "name": "@fuzzco/in-view",
-    "version": "1.2.2",
+    "version": "1.2.4",
     "description": "Vue mixin for smooth and robust enter/leave viewport handling.",
     "main": "dist/index.js",
     "scripts": {
